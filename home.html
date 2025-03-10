@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheNetiquettes</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hero to Header</title>
+</head>
+<body class="yes">
+    <div class="blocked">
+        <h1>Not accessible for Portable Devices. Please visit on a Computer. Thank you -Group 2 Einstein</h1>
+    </div>
+    <div class="unblocked">
+    <div class="hero" id="hero">
+        <div class="logo-container">
+            <div class="typing" id="typing"></div><span class="cursor"></span> <!-- Replace with actual image -->
+        </div>
+        <img src="image/thenetiquettes logo.png" alt="Logo">
+    </div>
+    <div class="header" id="header">
+        <img src="image/thenetiquettes logo2.png" alt="Logo"> <!-- Replace with actual image -->
+        <div class="nav">
+            <a href="home.html">Home</a>
+            <a href="#h2.rules">10 Netiquettes</a>
+        </div>
+    </div>
+    <section>
+    <div class="introsection">
+        <h1>Welcome to TheNetiquettes!</h1>
+        <div class="intropar">
+            <p class="introdesc">Welcome to the digital age, where interactions are now online. While technology connects us in unique ways, it is crucial to remember that behind every online identity is a real person. That is where we made this netiquette, or network etiquette comes in. This site is dedicated to helping you navigate online communication with respect and effectiveness. Whether you are experienced, or a newbie (new user), understanding and practicing good netiquette is essential for building good relationships, fostering productive communities around the world, and maintaining a healthy environment for the internet. </p>
+        </div>
+    </div>
+    <hr>
+    <div class="section2">
+        <h2 class="title">Online Safety, Security, Ethics, and Etiquette</h2>
+        <table class="types">
+            <tr>
+                <td><img src="/image/1.png" alt="Cyber Safety" style="width: 550px; border-radius: 10px;"></td>
+                <td>
+                    <h2 class="tdh2">Online/Internet/Cyber Safety</h2>
+                    <p>is trying to be safe on the internet and is the act of maximizing a user's awareness of personal safety and security risks to private information and property associated with using the internet, and the self-protection.</p>
+                </td>
+            </tr>
+        </table>
+        <table class="types">
+            <tr>
+                <td><img src="image/2.png" alt="Cyber Safety" style="width: 550px; border-radius: 10px;"></td>
+                <td>
+                    <h2 class="tdh2" >Internet Security</h2>
+                    <p>A very broad issue covering security for transactions made over the internet. It encompasses the security of data entered through a web form, browser security and overall authentication and protection of data sent via internet protocol.</p>
+                </td>
+            </tr>
+        </table>
+        <table class="types">
+                <tr>
+                <td ><a href="/netiquette.html"><img src="image/3.png" alt="Cyber Safety" class="yesking" style="width: 550px; border-radius: 10px;"></a></td>
+                <td>
+                    <h2 class="tdh2">Ethics and Netiquette (Network Etiquette) </h2>
+                    <p>Network Etiquette, or Netiquette for short, consists of moral principles governing acceptable behavior in online spaces. <a href="/netiquette.html"><p>Click here for more info.</p></a></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<footer>
+    <p>For Educational Purposes only. | TheNetiquettes</p>
+    <p>A project of Group 2 - Einstein</p>
+    <p>
+        <a href="team.html" style="color: #fff; text-decoration: none; margin: 0 10px;">Meet the Team</a>
+    </p>
+</footer>
+    <script>
+        window.addEventListener('scroll', function() {
+            let hero = document.getElementById('hero');
+            let header = document.getElementById('header');
+            if (window.scrollY > hero.clientHeight / 1.1) {
+                header.classList.add('show-header');
+            } else {
+                header.classList.remove('show-header');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let text = "Welcome to...";
+            let typingElement = document.getElementById("typing");
+            let index = 0;
+            function type() {
+                if (index < text.length) {
+                    typingElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100);
+                }
+            }
+            type();
+        });
+    </script>
+</div>
+</body>
+</html>
