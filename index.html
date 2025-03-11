@@ -80,29 +80,37 @@
     </p>
 </footer>
     <script>
-        window.addEventListener('scroll', function() {
-            let hero = document.getElementById('hero');
-            let header = document.getElementById('header');
-            if (window.scrollY > hero.clientHeight / 1.1) {
-                header.classList.add('show-header');
-            } else {
-                header.classList.remove('show-header');
-            }
-        });
+window.addEventListener("scroll", function () {
+    let hero = document.getElementById("hero");
+    let header = document.getElementById("header");
 
-        document.addEventListener("DOMContentLoaded", function() {
-            let text = "Welcome to...";
-            let typingElement = document.getElementById("typing");
-            let index = 0;
-            function type() {
-                if (index < text.length) {
-                    typingElement.textContent += text.charAt(index);
-                    index++;
-                    setTimeout(type, 100);
-                }
-            }
-            type();
-        });
+    if (!hero || !header) return; // Ensure elements exist
+
+    let scrollThreshold = window.innerWidth <= 768 ? hero.clientHeight * 0.8 : hero.clientHeight * 0.9;
+
+    if (window.scrollY > scrollThreshold) {
+        header.classList.add("show-header");
+    } else {
+        header.classList.remove("show-header");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let text = "Welcome to...";
+    let typingElement = document.getElementById("typing");
+
+    if (!typingElement) return; // Ensure element exists
+
+    let index = 0;
+    function type() {
+        if (index < text.length) {
+            typingElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+    type();
+});
     </script>
 </div>
 </body>
