@@ -1,114 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Welcome to TheNetiquettes</title>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hero to Header</title>
-</head>
-<body class="yes">
-    <div class="unblocked">
-    <div class="hero" id="hero">
-        <div class="logo-container">
-            <div class="typing" id="typing"></div><span class="cursor"></span> <!-- Replace with actual image -->
-        </div>
-        <img src="image/thenetiquettes logo.png" alt="Logo">
-    </div>
-    <div class="header" id="header">
-        <img src="image/thenetiquettes logo2.png" alt="Logo"> <!-- Replace with actual image -->
-        <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="team.html">Meet the Team</a>
-        </div>
-    </div>
-    <section>
-    <div class="introsection">
-        <h1>Welcome to TheNetiquettes!</h1>
-        <div class="intropar">
-            <p class="introdesc">Welcome to the digital age, where interactions are now online. While technology connects us in unique ways, it is crucial to remember that behind every online identity is a real person. That is where we made this netiquette, or network etiquette comes in. This site is dedicated to helping you navigate online communication with respect and effectiveness. Whether you are experienced, or a newbie (new user), understanding and practicing good netiquette is essential for building good relationships, fostering productive communities around the world, and maintaining a healthy environment for the internet. </p>
-        </div>
-    </div>
-    <hr>
-    <div class="section2">
-        <h2 class="title">Online Safety, Security, Ethics, and Etiquette</h2>
-        <table class="types">
-            <tr>
-                <td><img src="/image/1.png" alt="Cyber Safety" style="width: 550px; border-radius: 10px;"></td>
-                <td>
-                    <h2 class="tdh2">Online/Internet/Cyber Safety</h2>
-                    <p>is trying to be safe on the internet and is the act of maximizing a user's awareness of personal safety and security risks to private information and property associated with using the internet, and the self-protection.</p>
-                </td>
-            </tr>
-        </table>
-        <table class="types">
-            <tr>
-                <td><img src="image/2.png" alt="Cyber Safety" style="width: 550px; border-radius: 10px;"></td>
-                <td>
-                    <h2 class="tdh2" >Internet Security</h2>
-                    <p>A very broad issue covering security for transactions made over the internet. It encompasses the security of data entered through a web form, browser security and overall authentication and protection of data sent via internet protocol.</p>
-                </td>
-            </tr>
-        </table>
-        <table class="types">
-                <tr>
-                <td ><a href="/netiquette.html"><img src="image/3.png" alt="Cyber Safety" class="yesking" style="width: 550px; border-radius: 10px;"></a></td>
-                <td>
-                    <h2 class="tdh2">Ethics and Netiquette (Network Etiquette) </h2>
-                    <p>Network Etiquette, or Netiquette for short, consists of moral principles governing acceptable behavior in online spaces. <a href="/netiquette.html"><p>Click here for more info.</p></a></p>
-                </td>
-            </tr>
-        </table>
-    </div>
-</section>
-<footer>
-    <p>For Educational Purposes only. | TheNetiquettes</p>
-    <p>A project of Group 2 - Einstein</p>
-    <p>
-        <a href="team.html" style="color: #fff; text-decoration: none; margin: 0 10px;">Meet the Team</a>
-    </p>
-</footer>
-    <script>
-window.addEventListener("scroll", function () {
-    let hero = document.getElementById("hero");
-    let header = document.getElementById("header");
-
-    if (!hero || !header) return; // Ensure elements exist
-
-    let scrollThreshold = window.innerWidth <= 768 ? hero.clientHeight * 0.8 : hero.clientHeight * 0.9;
-
-    if (window.scrollY > scrollThreshold) {
-        header.classList.add("show-header");
-    } else {
-        header.classList.remove("show-header");
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    let text = "Welcome to...";
-    let typingElement = document.getElementById("typing");
-
-    if (!typingElement) return; // Ensure element exists
-
-    let index = 0;
-    function type() {
-        if (index < text.length) {
-            typingElement.textContent += text.charAt(index);
-            index++;
-            setTimeout(type, 100);
+    <title>Radio Automation Studio - Master Control</title>
+    <!-- Metadata extraction library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <style>
+        :root {
+            --bg-chassis: #050505;
+            --metal-gradient: linear-gradient(180deg, #2a2a2e 0%, #151518 100%);
+            --metal-recessed: linear-gradient(180deg, #111113 0%, #1a1a1d 100%);
+            --accent-green: #39ff14;
+            --accent-red: #ff003c;
+            --accent-blue: #00f0ff;
+            --accent-purple: #bf00ff;
+            --lcd-bg: #000000;
+            --text-lcd: #39ff14;
+            --text-dim: #737373;
         }
-    }
-    type();
-});
-    </script>
+
+        * { box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-chassis);
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1d 0%, #050505 100%);
+            color: #eeeeee;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 10px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Top Row Grid Layout */
+        .top-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        /* Responsive Breakpoints for Top Row */
+        @media (min-width: 768px) {
+            .top-row {
+                grid-template-columns: 1fr 1fr 0.8fr 2fr 1.5fr;
+                height: 100px;
+            }
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            flex: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1.2fr 1fr;
+                overflow: hidden;
+            }
+            body { height: 100vh; overflow: hidden; padding: 20px; }
+        }
+
+        .playlist-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        @media (min-width: 1024px) {
+            .playlist-col {
+                display: grid;
+                grid-template-rows: 2.5fr 1fr 1fr 1fr;
+                overflow: hidden;
+            }
+        }
+
+        .control-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .control-col { overflow: hidden; }
+        }
+        
+        .panel { padding: 20px; display: flex; flex-direction: column; }
+
+        .beveled {
+            background: var(--metal-gradient);
+            border: 1px solid #000;
+            border-top: 1px solid #444;
+            border-left: 1px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+            border-radius: 6px;
+        }
+
+        .sunken {
+            background: var(--lcd-bg);
+            border: 2px solid #0a0a0a;
+            box-shadow: inset 0 4px 12px rgba(0,0,0,1);
+            border-radius: 4px;
+        }
+
+        .header-box { padding: 12px; display: flex; flex-direction: column; justify-content: center; }
+        .label-tiny { font-size: 10px; font-weight: 900; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; z-index: 2; }
+        .val-lcd { font-size: 18px; font-weight: 700; font-family: 'Courier New', monospace; color: var(--text-lcd); text-shadow: 0 0 8px rgba(57, 255, 20, 0.4); z-index: 2; }
+
+        .btn-main { 
+            border: 1px solid #000; 
+            font-weight: 900; 
+            font-size: 14px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            position: relative; 
+            transition: all 0.05s linear; 
+            border-radius: 6px; 
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.8); 
+            color: #fff; 
+            min-height: 50px; /* Better for mobile touch */
+        }
+        .btn-start { background: linear-gradient(180deg, #00e65c, #009933); box-shadow: inset 0 2px 2px rgba(255,255,255,0.4), 0 6px 0 #004d1a, 0 8px 15px rgba(0,0,0,0.6); }
+        .btn-start:active { transform: translateY(4px); box-shadow: 0 2px 0 #004d1a; }
+        .btn-stop { background: linear-gradient(180deg, #ff3333, #b30000); box-shadow: inset 0 2px 2px rgba(255,255,255,0.4), 0 6px 0 #4d0000, 0 8px 15px rgba(0,0,0,0.6); }
+        .btn-stop:active { transform: translateY(4px); box-shadow: 0 2px 0 #4d0000; }
+        .btn-main:disabled { background: linear-gradient(180deg, #444, #222); color: #777; transform: translateY(4px); cursor: not-allowed; box-shadow: none; }
+
+        .btn-util { background: linear-gradient(180deg, #333, #111); font-size: 11px; padding: 15px; box-shadow: 0 3px 0 #000; }
+
+        .stack-card { padding: 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; min-height: 120px; }
+        .stack-card.active { background: var(--metal-gradient); border-left: 6px solid var(--accent-green); min-height: 200px; }
+        .progress-bg { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent-green); opacity: 0.15; z-index: 1; pointer-events: none; }
+
+        .stack-title { font-size: 22px; font-weight: 800; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,1); margin: 4px 0; z-index: 2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .stack-artist { font-size: 14px; color: var(--accent-blue); font-weight: bold; margin-bottom: 4px; z-index: 2; }
+        .stack-album { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+
+        .stack-dur { position: absolute; right: 15px; top: 15px; font-family: 'Courier New', monospace; color: var(--accent-blue); font-size: 14px; font-weight: bold; z-index: 2; }
+
+        .type-badge { font-size: 10px; padding: 4px 8px; border-radius: 3px; font-weight: 900; background: #000; border: 1px solid #444; color: var(--text-dim); z-index: 2; display: inline-block; margin-bottom: 10px; }
+        .badge-music { color: var(--accent-green); border-color: var(--accent-green); }
+        .badge-jingle { color: var(--accent-purple); border-color: var(--accent-purple); }
+
+        .section-label { font-size: 11px; font-weight: 900; color: var(--text-dim); text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 8px; letter-spacing: 1px; }
+
+        .import-row { display: flex; gap: 15px; align-items: center; background: var(--metal-recessed); padding: 20px; margin-bottom: 12px; cursor: pointer; border: 1px solid #000; border-radius: 4px; box-shadow: inset 0 3px 8px rgba(0,0,0,0.9); }
+        .import-row span:last-child { margin-left: auto; color: var(--accent-blue); font-family: 'Courier New', monospace; font-weight: bold; font-size: 16px; }
+
+        .meter-container { width: 100%; height: 14px; background: #000; margin: 10px 0; border-radius: 2px; display: flex; gap: 2px; padding: 2px; border: 1px solid #1a1a1d; z-index: 2; position: relative; }
+        .meter-segment { flex: 1; height: 100%; background: #111; border-radius: 1px; transition: background 0.05s ease; }
+        
+        .led { width: 12px; height: 12px; border-radius: 50%; background: #111; display: inline-block; margin-right: 10px; border: 1px solid #000; z-index: 2; }
+        .led.active-scan { background: var(--accent-red); box-shadow: 0 0 12px var(--accent-red); }
+
+        .terminal { min-height: 150px; padding: 15px; font-family: 'Courier New', monospace; font-size: 11px; overflow-y: scroll; color: var(--text-lcd); background: var(--lcd-bg); border-radius: 6px; box-shadow: inset 0 5px 15px rgba(0,0,0,1); line-height: 1.4; }
+        
+        @media (min-width: 1024px) {
+            .terminal { flex: 1; }
+        }
+
+        /* Improved touch targets for sliders */
+        .slider-group { margin-bottom: 20px; }
+        .slider-label { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 12px; color: #aaa; font-weight: bold; }
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; height: 30px; }
+        input[type=range]::-webkit-slider-runnable-track { height: 6px; background: #111; border-radius: 3px; }
+        input[type=range]::-webkit-slider-thumb { height: 26px; width: 16px; border-radius: 3px; background: #666; cursor: pointer; -webkit-appearance: none; margin-top: -10px; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+
+<div class="top-row">
+    <div class="header-box beveled">
+        <span class="label-tiny">Progress</span>
+        <div class="val-lcd" id="dispTime">00:00 / 00:00</div>
+    </div>
+    <div class="header-box beveled">
+        <span class="label-tiny">Master Clock</span>
+        <div class="val-lcd" id="clock">00:00:00</div>
+    </div>
+    <div class="header-box beveled">
+        <span class="label-tiny">Engine State</span>
+        <div class="val-lcd" id="scanStatus" style="color:var(--text-dim)">READY</div>
+    </div>
+    <div class="header-box beveled" id="mobileDummy" style="display:none"></div> <!-- Helper for grid -->
+    <button class="btn-main btn-start" id="startBtn" disabled>Engage Master</button>
+    <button class="btn-main btn-stop" id="stopBtn" disabled>Stop</button>
 </div>
+
+<div class="main-container">
+    <div class="playlist-col">
+        <div class="stack-card beveled active">
+            <div id="progressBar" class="progress-bg"></div>
+            
+            <div id="curBadge"></div>
+            <div class="stack-artist" id="onAirArtist">AWAITING SIGNAL</div>
+            <div class="stack-title" id="onAirTitle">STATION IDLE</div>
+            <div class="stack-album" id="onAirAlbum">SYSTEM READY</div>
+            
+            <div id="levelMeter" class="meter-container"></div>
+
+            <div class="stack-dur" id="onAirDur">--:--</div>
+            
+            <div style="margin-top: auto; padding-top: 10px; z-index: 2;">
+                <div class="sunken" style="padding: 10px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center;">
+                        <div id="scanIndicator" class="led"></div>
+                        <span class="label-tiny" style="margin:0; color: #aaa;">Scan: <span id="vW" style="color:var(--accent-blue);">10</span>s</span>
+                    </div>
+                    <span style="font-family: monospace; font-size: 9px; color: #444;">V3.3 • MOBILE OK</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stack-card beveled">
+            <span class="label-tiny">Coming Up Next</span>
+            <div id="next1Title" style="font-weight: bold; color: var(--accent-blue); font-size: 16px;">---</div>
+            <div id="next1Sub" style="font-size: 11px; color: #666;">---</div>
+        </div>
+        <!-- Hidden on very small mobile to save space, shown on tablets+ -->
+        <div class="stack-card beveled">
+            <span class="label-tiny">Queue Slot 02</span>
+            <div id="next2Title" style="font-size: 14px; color: #888;">---</div>
+        </div>
+    </div>
+
+    <div class="control-col">
+        <div class="panel beveled">
+            <span class="section-label">Media Intake</span>
+            <div class="import-row" id="musicTrig">
+                <span>MUSIC BANK</span> <span id="mCount">0000</span>
+            </div>
+            <div class="import-row" id="jingleTrig">
+                <span>IMAGING BANK</span> <span id="jCount">0000</span>
+            </div>
+            <button class="btn-main btn-util" id="shuffleBtn">Shuffle Music Bank</button>
+        </div>
+
+        <div class="panel beveled">
+            <span class="section-label">Silence Thresholds (EOT)</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <div class="slider-group">
+                        <div class="slider-label"><span>MUSIC SENS.</span> <span id="mThrVal">67</span></div>
+                        <input type="range" id="mThr" min="0" max="100" value="67">
+                    </div>
+                    <div class="slider-group">
+                        <div class="slider-label"><span>MUSIC WINDOW</span> <span id="mWinVal">10s</span></div>
+                        <input type="range" id="mWin" min="1" max="30" value="10">
+                    </div>
+                </div>
+                <div>
+                    <div class="slider-group">
+                        <div class="slider-label"><span>JINGLE SENS.</span> <span id="jThrVal">73</span></div>
+                        <input type="range" id="jThr" min="0" max="100" value="73">
+                    </div>
+                    <div class="slider-group">
+                        <div class="slider-label"><span>JINGLE WINDOW</span> <span id="jWinVal">6s</span></div>
+                        <input type="range" id="jWin" min="1" max="15" value="6">
+                    </div>
+                </div>
+            </div>
+            <div class="slider-group" style="margin-bottom:0">
+                <div class="slider-label"><span>JINGLE CHANCE</span> <span id="jProbVal">40%</span></div>
+                <input type="range" id="jProb" min="0" max="100" value="40">
+            </div>
+        </div>
+
+        <div class="panel beveled" style="flex:1; display:flex; flex-direction:column; min-height: 250px;">
+            <span class="section-label">Telemetry & Diagnostics</span>
+            <div class="terminal sunken" id="term"></div>
+        </div>
+    </div>
+</div>
+
+<input type="file" id="mIn" webkitdirectory directory multiple accept="audio/*" style="display:none;">
+<input type="file" id="jIn" webkitdirectory directory multiple accept="audio/*" style="display:none;">
+
+<script>
+    const jsmediatags = window.jsmediatags;
+
+    async function getMeta(file) {
+        return new Promise((resolve) => {
+            jsmediatags.read(file, {
+                onSuccess: function(tag) {
+                    resolve({
+                        title: tag.tags.title || file.name.replace(/\.[^/.]+$/, ""),
+                        artist: tag.tags.artist || "Unknown Artist",
+                        album: tag.tags.album || "Unknown Album",
+                        filename: file.name.toLowerCase()
+                    });
+                },
+                onError: function() {
+                    resolve({ 
+                        title: file.name.replace(/\.[^/.]+$/, ""), 
+                        artist: "Unknown Artist", 
+                        album: "Unknown Album",
+                        filename: file.name.toLowerCase()
+                    });
+                }
+            });
+        });
+    }
+
+    const state = {
+        music: [], jingles: [], mIdx: 0, active: false,
+        mThr: 0.67, jThr: 0.73,
+        mScanWindow: 10, jScanWindow: 6,
+        audioCtx: null, analyser: null, data: null,
+        pending: false, curType: 'NONE',
+        nextDecision: 'MUSIC', 
+        smoothVolume: 0,
+        lastTOH: -1, 
+        forcedQueue: []
+    };
+
+    const p1 = new Audio(); const p2 = new Audio();
+    p1.crossOrigin = p2.crossOrigin = "anonymous";
+    let curP = p1, nxtP = p2;
+
+    const log = (msg, action=false) => {
+        const d = document.getElementById('term');
+        if (!d) return;
+        const div = document.createElement('div');
+        div.style.color = action ? 'var(--accent-blue)' : 'var(--text-lcd)';
+        div.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
+        d.appendChild(div);
+        d.scrollTop = d.scrollHeight;
+    };
+
+    let segments = [];
+    const segmentCount = 40;
+
+    window.onload = () => {
+        const meter = document.getElementById('levelMeter');
+        if (meter) {
+            for(let i=0; i<segmentCount; i++) {
+                const seg = document.createElement('div');
+                seg.className = 'meter-segment';
+                meter.appendChild(seg);
+                segments.push(seg);
+            }
+        }
+
+        setInterval(() => {
+            const clockEl = document.getElementById('clock');
+            if (clockEl) clockEl.innerText = new Date().toLocaleTimeString();
+        }, 1000);
+
+        log("SYSTEM: MASTER CONTROL INITIALIZED.");
+        log("MOBILE OPTIMIZATION ACTIVE.");
+
+        // UI Event Listeners
+        document.getElementById('mThr').oninput = (e) => { state.mThr = e.target.value / 100; document.getElementById('mThrVal').innerText = e.target.value; };
+        document.getElementById('jThr').oninput = (e) => { state.jThr = e.target.value / 100; document.getElementById('jThrVal').innerText = e.target.value; };
+        document.getElementById('mWin').oninput = (e) => { state.mScanWindow = parseInt(e.target.value); document.getElementById('mWinVal').innerText = e.target.value + 's'; };
+        document.getElementById('jWin').oninput = (e) => { state.jScanWindow = parseInt(e.target.value); document.getElementById('jWinVal').innerText = e.target.value + 's'; };
+        document.getElementById('jProb').oninput = (e) => { 
+            document.getElementById('jProbVal').innerText = e.target.value + '%';
+            updateQueue(); 
+        };
+
+        document.getElementById('musicTrig').onclick = () => document.getElementById('mIn').click();
+        document.getElementById('jingleTrig').onclick = () => document.getElementById('jIn').click();
+        
+        document.getElementById('shuffleBtn').onclick = () => {
+            if (state.music.length === 0) return;
+            for (let i = state.music.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [state.music[i], state.music[j]] = [state.music[j], state.music[i]];
+            }
+            state.mIdx = 0;
+            log("Operator executed MUSIC BANK SHUFFLE.", true);
+            updateQueue();
+        };
+
+        document.getElementById('mIn').onchange = async (e) => {
+            const files = Array.from(e.target.files).filter(f => f.type.startsWith('audio') || f.name.endsWith('.mp3'));
+            state.music = [];
+            log(`INTAKE: Parsing ${files.length} music files...`, true);
+            for(let f of files) {
+                const meta = await getMeta(f);
+                state.music.push({ file: f, ...meta });
+            }
+            document.getElementById('mCount').innerText = state.music.length.toString().padStart(4, '0');
+            if (state.music.length > 0) document.getElementById('startBtn').disabled = false;
+            updateQueue();
+        };
+
+        document.getElementById('jIn').onchange = async (e) => {
+            const files = Array.from(e.target.files).filter(f => f.type.startsWith('audio') || f.name.endsWith('.mp3'));
+            state.jingles = [];
+            log(`INTAKE: Parsing ${files.length} imaging files...`, true);
+            for(let f of files) {
+                const meta = await getMeta(f);
+                state.jingles.push({ file: f, ...meta });
+            }
+            document.getElementById('jCount').innerText = state.jingles.length.toString().padStart(4, '0');
+            updateQueue();
+        };
+
+        document.getElementById('startBtn').onclick = () => {
+            initAudio(); state.active = true;
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+            playNext();
+        };
+        document.getElementById('stopBtn').onclick = () => location.reload();
+    };
+
+    function updateQueue() {
+        const slots = [document.getElementById('next1Title'), document.getElementById('next2Title')];
+        let displayItems = [];
+
+        // Check for Forced Queue (TOH items)
+        for(let item of state.forcedQueue) {
+            displayItems.push({ text: item.title.toUpperCase(), color: 'var(--accent-purple)' });
+        }
+
+        let vDec = state.nextDecision;
+        let vIdx = state.mIdx;
+        let prob = parseInt(document.getElementById('jProb').value);
+        
+        while(displayItems.length < 2) {
+            if (vDec === 'JINGLE' && state.jingles.length > 0) {
+                displayItems.push({ text: "STATION ID / JINGLE", color: "var(--accent-purple)" });
+                vDec = 'MUSIC';
+            } else if (state.music.length > 0) {
+                const m = state.music[vIdx % state.music.length];
+                displayItems.push({ text: m.title.toUpperCase(), color: "" });
+                vIdx++;
+                
+                if (vIdx >= state.music.length || (Math.random() * 100) < prob) {
+                    vDec = state.jingles.length > 0 ? 'JINGLE' : 'MUSIC';
+                } else {
+                    vDec = 'MUSIC';
+                }
+                if (vIdx >= state.music.length) vIdx = 0;
+            } else {
+                displayItems.push({ text: "EMPTY BANK", color: "#444" });
+                break;
+            }
+        }
+
+        slots.forEach((slot, i) => {
+            if (slot) {
+                const item = displayItems[i];
+                slot.innerText = item ? item.text : "---";
+                slot.style.color = item ? (item.color || "") : "#444";
+            }
+        });
+    }
+
+    function initAudio() {
+        if (state.audioCtx) return;
+        state.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        state.analyser = state.audioCtx.createAnalyser();
+        state.analyser.fftSize = 256;
+        state.audioCtx.createMediaElementSource(p1).connect(state.analyser);
+        state.audioCtx.createMediaElementSource(p2).connect(state.analyser);
+        state.analyser.connect(state.audioCtx.destination);
+        state.data = new Uint8Array(state.analyser.frequencyBinCount);
+        requestAnimationFrame(updateLoop);
+    }
+
+    function playNext() {
+        if (state.pending || !state.active) return;
+        state.pending = true;
+
+        const now = new Date();
+        const mins = now.getMinutes();
+        const currentHour = now.getHours();
+        
+        if ((mins >= 58 || mins <= 3) && state.lastTOH !== currentHour && state.forcedQueue.length === 0) {
+            const j11 = state.jingles.find(f => f.filename === '11.wav');
+            const jToh = state.jingles.find(f => f.filename === 'tohannouncement.wav');
+            
+            if (j11 || jToh) {
+                state.lastTOH = currentHour;
+                if (j11) state.forcedQueue.push({ ...j11, type: 'JINGLE' });
+                if (jToh) state.forcedQueue.push({ ...jToh, type: 'JINGLE' });
+                
+                log("SEQUENCE: Top of the Hour Alignment.", true);
+                updateQueue();
+            }
+        }
+
+        let item;
+        if (state.forcedQueue.length > 0) {
+            item = state.forcedQueue.shift();
+            state.curType = 'JINGLE';
+        } else {
+            if (state.nextDecision === 'JINGLE' && state.jingles.length > 0) {
+                item = state.jingles[Math.floor(Math.random() * state.jingles.length)];
+                state.curType = 'JINGLE';
+                state.nextDecision = 'MUSIC';
+            } else {
+                if (state.music.length === 0) { state.pending = false; return; }
+                item = state.music[state.mIdx];
+                state.mIdx++;
+                state.curType = 'MUSIC';
+                
+                const prob = parseInt(document.getElementById('jProb').value);
+                if (state.mIdx >= state.music.length || (Math.random() * 100) < prob) {
+                    state.nextDecision = state.jingles.length > 0 ? 'JINGLE' : 'MUSIC';
+                    if (state.mIdx >= state.music.length) state.mIdx = 0;
+                } else {
+                    state.nextDecision = 'MUSIC';
+                }
+            }
+        }
+
+        const url = URL.createObjectURL(item.file);
+        nxtP.src = url;
+        nxtP.play().then(() => {
+            setTimeout(() => {
+                curP.pause();
+                if(curP.src) URL.revokeObjectURL(curP.src);
+                let tmp = curP; curP = nxtP; nxtP = tmp;
+                
+                document.getElementById('onAirArtist').innerText = item.artist.toUpperCase();
+                document.getElementById('onAirTitle').innerText = item.title.toUpperCase();
+                document.getElementById('onAirAlbum').innerText = item.album.toUpperCase();
+                
+                document.getElementById('curBadge').innerHTML = `<span class="type-badge badge-${state.curType.toLowerCase()}">${state.curType} CHANNEL</span>`;
+                document.querySelector('.stack-card.active').style.borderLeftColor = state.curType === 'JINGLE' ? 'var(--accent-purple)' : 'var(--accent-green)';
+                
+                log(`ON AIR: ${item.title}`, true);
+                updateQueue();
+                state.pending = false;
+            }, 500);
+        }).catch((err) => { 
+            log(`PLAYBACK ERROR: ${err.message}`);
+            state.pending = false; 
+            playNext(); 
+        });
+    }
+
+    function updateLoop() {
+        if (!state.active) return;
+        state.analyser.getByteFrequencyData(state.data);
+
+        let sumSquares = 0;
+        for(let i=0; i<state.data.length; i++) sumSquares += Math.pow(state.data[i] / 255, 2);
+        let rms = Math.sqrt(sumSquares / state.data.length);
+        let dbValue = (rms > 0) ? 20 * Math.log10(rms) : -100;
+        
+        let currentVol = 0;
+        if (dbValue <= -70) currentVol = 0;
+        else if (dbValue <= -40) currentVol = ((dbValue + 70) / 30) * 17.5;
+        else if (dbValue <= -20) currentVol = 17.5 + ((dbValue + 40) / 20) * (60 - 17.5);
+        else currentVol = 60 + ((dbValue + 20) / 20) * 40;
+
+        state.smoothVolume += (currentVol - state.smoothVolume) * 0.15;
+
+        const fillCount = Math.floor((state.smoothVolume / 100) * segmentCount);
+        segments.forEach((seg, i) => {
+            if (i < fillCount) {
+                if (i < segmentCount * 0.7) seg.style.background = 'var(--accent-green)';
+                else if (i < segmentCount * 0.9) seg.style.background = 'yellow';
+                else seg.style.background = 'var(--accent-red)';
+                seg.style.boxShadow = `0 0 5px ${seg.style.background}`;
+            } else {
+                seg.style.background = '#111';
+                seg.style.boxShadow = 'none';
+            }
+        });
+
+        if (!isNaN(curP.duration) && curP.duration > 0) {
+            let rem = curP.duration - curP.currentTime;
+            document.getElementById('dispTime').innerText = formatTime(curP.currentTime) + " / " + formatTime(curP.duration);
+            document.getElementById('onAirDur').innerText = formatTime(rem);
+            
+            const pb = document.getElementById('progressBar');
+            pb.style.width = ((curP.currentTime / curP.duration) * 100) + '%';
+            pb.style.backgroundColor = state.curType === 'JINGLE' ? 'var(--accent-purple)' : 'var(--accent-green)';
+
+            const thr = state.curType === 'JINGLE' ? state.jThr : state.mThr;
+            const win = state.curType === 'JINGLE' ? state.jScanWindow : state.mScanWindow;
+            document.getElementById('vW').innerText = win;
+
+            if (rem < win && !state.pending) {
+                document.getElementById('scanStatus').innerText = "SCANNING";
+                document.getElementById('scanIndicator').classList.add('active-scan');
+                if ((state.smoothVolume / 100) < thr) playNext();
+            } else {
+                document.getElementById('scanStatus').innerText = "TRACKING";
+                document.getElementById('scanIndicator').classList.remove('active-scan');
+            }
+        }
+        requestAnimationFrame(updateLoop);
+    }
+
+    function formatTime(s) {
+        let m = Math.floor(s/60); let sec = Math.floor(s%60);
+        return m.toString().padStart(2, '0') + ":" + sec.toString().padStart(2, '0');
+    }
+</script>
 </body>
 </html>
