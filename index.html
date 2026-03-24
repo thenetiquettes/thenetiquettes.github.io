@@ -478,8 +478,8 @@
         const currentHour = now.getHours();
         
         if ((mins >= 58 || mins <= 3) && state.lastTOH !== currentHour && state.forcedQueue.length === 0) {
-            const j11 = state.jingles.find(f => f.filename === '11.wav');
-            const jToh = state.jingles.find(f => f.filename === 'tohannouncement.wav');
+            const j11 = state.jingles.find(f => f.filename === 'tohjingle.mp3');
+            const jToh = state.jingles.find(f => f.filename === 'tohannouncement.mp3');
             
             if (j11 || jToh) {
                 state.lastTOH = currentHour;
