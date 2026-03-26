@@ -619,89 +619,90 @@ if ((mins >= 58 || mins <= 2)) {
     }
 
     async function playNext() {
-    // Prevent multiple simultaneous transitions
-    if (!state.active || state.pending || state.isTransitioning) return;
-    state.pending = true;
-    state.isTransitioning = true;
+        // Prevent multiple simultaneous transitions
+        if (!state.active || state.pending || state.isTransitioning) return;
+        state.pending = true;
+        state.isTransitioning = true;
 
-    const trackObj = getNextTrack();
-    if (!trackObj) {
-        state.pending = false;
-        state.isTransitioning = false;
-        return;
-    }
-
-    const { item, type, noScan } = trackObj;
-    state.curType = type;
-    state.curNoScan = noScan || false;
-    const url = URL.createObjectURL(item.file);
-
-    // Determine which player will become active after crossfade
-    const newPlayer = (activePlayer === playerA) ? playerB : playerA;
-    const oldPlayer = activePlayer; // the one currently playing (will be faded out)
-    const oldGain = (activePlayer === playerA) ? state.gainA : state.gainB;
-    const newGain = (activePlayer === playerA) ? state.gainB : state.gainA;
-
-    // CRITICAL: Clear the old player's ended handler so it doesn't trigger after fade
-    oldPlayer.onended = null;
-
-    // Stop and replace the new player's source
-    newPlayer.pause();
-    revokePlayerURL(newPlayer);
-    newPlayer.src = url;
-
-    try {
-        await newPlayer.play();
-
-        // Crossfade
-        const now = state.audioCtx.currentTime;
-        oldGain.gain.cancelScheduledValues(now);
-        oldGain.gain.setValueAtTime(1, now);
-        oldGain.gain.linearRampToValueAtTime(0, now + state.fadeTime);
-        newGain.gain.cancelScheduledValues(now);
-        newGain.gain.setValueAtTime(0, now);
-        newGain.gain.linearRampToValueAtTime(1, now + state.fadeTime);
-
-        // After the fade ends, the new player is the active one
-        setTimeout(() => {
-            activePlayer = newPlayer;
-            standbyPlayer = oldPlayer; // old player becomes standby
-            // Clear pending flags only after the fade completes
+        const trackObj = getNextTrack();
+        if (!trackObj) {
             state.pending = false;
             state.isTransitioning = false;
-            log(`Crossfade done, active = ${activePlayer === playerA ? 'A' : 'B'}`, true);
-            // The old player is now the standby; its gain is 0, ready to be reused
-        }, state.fadeTime * 1000);
-
-        if (state.audioCtx && state.audioCtx.state !== 'running') {
-            await state.audioCtx.resume();
+            return;
         }
 
-        // Update UI
-        document.getElementById('onAirArtist').innerText = item.artist.substring(0, 40);
-        document.getElementById('onAirTitle').innerText = item.title.substring(0, 45);
-        document.getElementById('onAirAlbum').innerText = item.album.substring(0, 40);
-        document.getElementById('onAirFile').innerText = `[${type}] ${item.filename}`;
-        document.getElementById('scanInd').style.display = 'none';
-        state.silenceFrames = 0;
-        state.scanActive = false;
-        log(`▶️ AIR [${type}] ${item.title} - ${item.artist}`);
-        updateQueueDisplay();
+        const { item, type, noScan } = trackObj;
+        state.curType = type;
+        state.curNoScan = noScan || false;
+        const url = URL.createObjectURL(item.file);
 
-        // Set ended event on the *new* player (which will become active after fade)
-        newPlayer.onended = () => {
-            if (!state.pending && !state.isTransitioning && state.active) {
-                log("⏹️ ended event → next", true);
-                playNext();
+        // Determine which player will become active
+        const newPlayer = (activePlayer === playerA) ? playerB : playerA;
+        const oldPlayer = activePlayer; // the one currently playing (will be allowed to finish)
+        const oldGain = (activePlayer === playerA) ? state.gainA : state.gainB;
+        const newGain = (activePlayer === playerA) ? state.gainB : state.gainA;
+
+        // CRITICAL: Clear the old player's ended handler so it doesn't trigger another transition
+        oldPlayer.onended = null;
+
+        // Stop and replace the new player's source (in case it had leftover data)
+        newPlayer.pause();
+        revokePlayerURL(newPlayer);
+        newPlayer.src = url;
+
+        try {
+            await newPlayer.play();
+
+            const now = state.audioCtx.currentTime;
+            
+            // 1. Keep the old track at 100% volume so it goes with the flow to its end
+            oldGain.gain.cancelScheduledValues(now);
+            oldGain.gain.setValueAtTime(1, now);
+            
+            // 2. Start the new track instantly at 100% volume
+            newGain.gain.cancelScheduledValues(now);
+            newGain.gain.setValueAtTime(1, now);
+
+            // 3. Instantly swap the players. The UI will now track the new song, 
+            // while the old song quietly finishes in the background.
+            activePlayer = newPlayer;
+            standbyPlayer = oldPlayer; 
+            
+            // 4. Release the locks immediately
+            state.pending = false;
+            state.isTransitioning = false;
+            
+            log(`▶️ Transitioned: Overlapping tracks. Previous track continues to end.`, true);
+
+            if (state.audioCtx && state.audioCtx.state !== 'running') {
+                await state.audioCtx.resume();
             }
-        };
-    } catch (err) {
-        log(`⚠️ Playback error: ${err.message}`, false);
-        state.pending = false;
-        state.isTransitioning = false;
-        setTimeout(() => playNext(), 500);
+
+            // Update UI
+            document.getElementById('onAirArtist').innerText = item.artist.substring(0, 40);
+            document.getElementById('onAirTitle').innerText = item.title.substring(0, 45);
+            document.getElementById('onAirAlbum').innerText = item.album.substring(0, 40);
+            document.getElementById('onAirFile').innerText = `[${type}] ${item.filename}`;
+            document.getElementById('scanInd').style.display = 'none';
+            state.silenceFrames = 0;
+            state.scanActive = false;
+            log(`▶️ AIR [${type}] ${item.title} - ${item.artist}`);
+            updateQueueDisplay();
+
+            // Set ended event on the *new* player 
+            newPlayer.onended = () => {
+                if (!state.pending && !state.isTransitioning && state.active) {
+                    log("⏹️ ended event → next", true);
+                    playNext();
+                }
+            };
+        } catch (err) {
+            log(`⚠️ Playback error: ${err.message}`, false);
+            state.pending = false;
+            state.isTransitioning = false;
+            setTimeout(() => playNext(), 500);
+        }
     }
-}
 
     function updateLoop() {
         if (!state.active) return;
